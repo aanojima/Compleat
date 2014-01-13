@@ -31,29 +31,29 @@ Develop at least one use case for your site. This should be a list or table demo
 
 Click sign in button
 
--Login dialog pops up
+    -Login dialog pops up
 
 
 Click login
 
--Logs in user. Ask to use wifi to detect location, or ask for address/zip code
+    -Logs in user. Ask to use wifi to detect location, or ask for address/zip code
 
--Displays personal profile/map
+    -Displays personal profile/map
 
 
 Filters through unvisited restaurants with preference checkboxes
 
--Displays map after filter
+    -Displays map after filter
 
 
 Click on a restaurant that he/she wants to go to
 
--adds to “wish list”
+    -adds to “wish list”
 
 
 Goes to restaurant, confirms that they went
 
--Deletes restaurant from “wish list” and personalized map
+    -Deletes restaurant from “wish list” and personalized map
 
 
 Site Design
