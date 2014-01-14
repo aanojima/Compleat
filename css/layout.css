@@ -1,0 +1,28 @@
+body {
+	padding : 0px;
+	margin : 0px;
+}
+
+nav li {
+	list-style-type: none;
+	/*float : left;*/
+	display:inline-block;
+	position : relative;
+	margin: 20px 20px;
+	left: -20px;
+}
+
+#nav_container {
+	height : 30px;
+}
+
+#map_canvas {
+	position : absolute;
+	top : 50px; 
+	width : 600px;
+	height : 400px;
+}
+
+#info {
+	border: solid 5px;
+}
