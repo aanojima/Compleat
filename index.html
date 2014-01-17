@@ -5,8 +5,27 @@
 	<script src ="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9fjLg9UIYuNHCxwI39Qdg6TKPI5pr3ZI&sensor=true"></script>
 	<script src="js/map.js"></script>
+	<link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-	<div id="map_canvas"></div>
+	<div id="container">
+		<div id="navigation_bar">
+			<ul>
+				<li>Home</li>
+				<li>Need</li>
+				<li>More</li>
+				<li>Menus</li>
+			</ul>
+		</div>
+		<div id="content">
+			<div id="content_top">
+				<div id="map_canvas"></div>
+				<div id="user_info"><h1>USER INFO</h1></div>
+			</div>
+			<div id="content_bottom">
+				<div id="table"><h1>TABLE</h1></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
