@@ -16,6 +16,7 @@
 //= require_tree .
 var map;
 var service;
+var placemarkers;
 
 	function handleNoGeolocation(errorFlag) {
 		var initialLocation;
@@ -30,7 +31,6 @@ var service;
 	}
 
 	function initialize() {
-		// TESTING
 		var initialLocation;
 		if(navigator.geolocation) {
 			browserSupportFlag = true;
@@ -39,8 +39,8 @@ var service;
 				map.setCenter(initialLocation);
 				var request = {
 					location: initialLocation,
-					radius: '225',
-					types: ['restaurant']
+					radius: '1000',
+					types: ['restaurant', 'cafe', 'bar', 'food', 'meal_delivery', 'meal_takeaway'],
 				}
 				service = new google.maps.places.PlacesService(map);
 				service.nearbySearch(request, callback);
@@ -53,16 +53,21 @@ var service;
 			browserSupportFlag = false;
 			handleNoGeolocation(browserSupportFlag);
 		}
-		//
+		
 		var mapOptions = {
 			zoom: 17,
 		};
 
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+		google.maps.event.addListener(map, 'dragend', function(event){
+			searchPlaces();
+		});
+
 	}
 
 	function callback(results, status){
+		console.log(results);
 	    if (status == google.maps.places.PlacesServiceStatus.OK) {
 	      for (var i = 0; i < results.length; i++) {
 	        var place = results[i];
@@ -75,13 +80,15 @@ var service;
 	      }
 	   }
 	}
+
 	function setMarker(place, mapset){
 		var LatLng = new google.maps.LatLng(place.geometry.location.d, place.geometry.location.e);
 		var name = place.name;
 		var address = place.formatted_address;
 		var marker = new google.maps.Marker({
 			position: LatLng,
-			map: mapset
+			map: mapset,
+			icon: place.icon,
 		});
 		var rating = place.rating;
 		if (rating){
@@ -106,6 +113,17 @@ var service;
 	}
 	// $(window).on('load' initialize);
 	// google.maps.event.addDomListener(window, 'load', initialize);
+
+	function searchPlaces(){
+		var newLocation = map.getCenter();
+		var request = {
+			location: newLocation,
+			radius: '1000',
+			types: ['restaurant']
+		}
+		service.nearbySearch(request, callback); 
+	}
+
 	$(document).ready(initialize);
 
 // });
