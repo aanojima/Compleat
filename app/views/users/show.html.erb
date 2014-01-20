@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Username:</strong>
@@ -32,3 +32,8 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+ -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWuJQ9I7VNlCE1GMswlE0xzqDZgWbzW-E&libraries=places&sensor=true"></script>
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<div id="map-canvas"></div>
