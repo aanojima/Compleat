@@ -6,6 +6,18 @@
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9fjLg9UIYuNHCxwI39Qdg6TKPI5pr3ZI&sensor=true"></script>
 	<script src="js/map.js"></script>
 	<link rel="stylesheet" href="css/layout.css">
+	<script>
+		$(document).ready(function(){
+			$.ajax({
+				url : "https://maps.googleapis.com/maps/api/place/nearbysearch/json?",
+				method : "GET",
+				data : "location=-33.8670522,151.1957362&rankby=distance&types=food&sensor=false&key=AIzaSyC9fjLg9UIYuNHCxwI39Qdg6TKPI5pr3ZI",
+				success : function(){
+					console.log("HI");
+				}
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="container">
