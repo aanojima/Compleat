@@ -1,0 +1,141 @@
+html,body{
+    margin:0px;
+    padding:0px;
+    height:100%;
+    width:100%;
+}
+img{
+    height:100%;
+    width:100%;
+}
+#emaildiv{
+    margin:auto;
+    position:absolute;
+    top:0;
+    bottom:190px;
+    left:0;
+    right:300px;
+    color:#EDF1FA;
+    height:30px;
+    width:200px;
+    font-family:'Gafata';
+}
+#passworddiv{
+    margin:auto;
+    position:absolute;
+    top:0;
+    bottom:90px;
+    left:0;
+    right:300px;
+    color:#EDF1FA;
+    height:30px;
+    width:200px;
+    font-family:'Gafata';
+}
+#email {
+    position:absolute;
+    top:0;
+    bottom:200px;
+    left:0;
+    right:0;
+    /*background: transparent;*/
+    background-color:#EDF1FA;
+    background-clip: padding-box;
+    
+    border: none;
+    border-radius:         26px;
+    -moz-border-radius:    26px;
+    -o-border-radius:      26px;
+    -webkit-border-radius: 26px;
+    
+    box-shadow:         inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow:    inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -o-box-shadow:      inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    
+    color: #1F4A8A;
+    height: 26px;
+
+    outline: none;
+    padding: 0 20px 0 20px;
+    margin:auto;
+    
+    transition:         all .1s linear;
+    -moz-transition:    all .1s linear;
+    -o-transition:      all .1s linear;
+    -webkit-transition: all .1s linear;
+    
+    width: 185px;
+}
+#password {
+    position:absolute;
+    top:0;
+    bottom:100px;
+    left:0;
+    right:0;
+    /*background: transparent;*/
+    background-color:#EDF1FA;
+    background-clip: padding-box;
+    
+    border: none;
+    border-radius:         26px;
+    -moz-border-radius:    26px;
+    -o-border-radius:      26px;
+    -webkit-border-radius: 26px;
+    
+    box-shadow:         inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow:    inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -o-box-shadow:      inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    
+    color: #1F4A8A;
+    height: 26px;
+
+    outline: none;
+    padding: 0 20px 0 20px;
+    margin:auto;
+    
+    transition:         all .1s linear;
+    -moz-transition:    all .1s linear;
+    -o-transition:      all .1s linear;
+    -webkit-transition: all .1s linear;
+    
+    width: 185px;
+}
+#signin{
+    width:150px;
+    height:35px;
+    position:absolute;
+    margin:auto;
+    top:25px;
+    bottom: 0px;
+    left: 0;
+    right: 0px;
+    font-family:'Gafata';
+    font-size:115%;
+
+}
