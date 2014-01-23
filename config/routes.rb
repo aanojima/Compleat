@@ -1,14 +1,15 @@
 FlyDelts::Application.routes.draw do
-  devise_for :users do
-    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
-  resources :restaurants
+  resources :users, :except => [:index]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :restaurants, :except => [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get 'signout', to: 'sessions#destroy', as: :sign_out
+
   # You can have the root of your site routed with "root"
-  root :to => 'home#index'
+  root :to => 'users#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
