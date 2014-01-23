@@ -14,10 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
 var map;
 var service;
 var placemarkers;
+
+$(document).ready(function(){
 
 	function handleNoGeolocation(errorFlag) {
 		var initialLocation;
@@ -127,8 +128,6 @@ var placemarkers;
 
 		marker.setMap(mapset);
 	}
-	// $(window).on('load' initialize);
-	// google.maps.event.addDomListener(window, 'load', initialize);
 
 	function searchPlaces(){
 		var newLocation = map.getCenter();
@@ -139,7 +138,17 @@ var placemarkers;
 		}
 		service.nearbySearch(request, callback); 
 	}
+	
+	$(".menu_selector").on("click", function(event){
+		var menu = $(this).attr("id");
+		var query = ".popup[div='" + menu + "']";
+		var width = $(query).width();
+		$(".popup").animate({"width" : "0px"});
+		var css;
+		width == 300 ? css = "0px" : css = "300px";
+		$(query).animate({"width" : css});
+	});	
 
-	$(document).ready(initialize);
+	initialize();
 
-// });
+});
