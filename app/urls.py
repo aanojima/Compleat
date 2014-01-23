@@ -4,6 +4,8 @@ from app import views
 
 urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
+	url(r'^signin/$', views.signin, name='signin'),
+	url(r'^signup/$', views.signup, name='signup'),
 	url(r'^main/$', views.main, name='main'),
 	url(r'^validate_old_user/$', views.validate_old_user, name="validate_old_user"),
 	url(r'^validate_new_user/$', views.validate_new_user, name="validate_new_user"),
