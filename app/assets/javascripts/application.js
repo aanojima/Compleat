@@ -67,7 +67,7 @@ var placemarkers;
 	}
 
 	function callback(results, status){
-		console.log(results);
+		// console.log(results);
 	    if (status == google.maps.places.PlacesServiceStatus.OK) {
 	      for (var i = 0; i < results.length; i++) {
 	        var place = results[i];
@@ -84,11 +84,12 @@ var placemarkers;
 	function setMarker(place, mapset){
 		var LatLng = new google.maps.LatLng(place.geometry.location.d, place.geometry.location.e);
 		var name = place.name;
-		var address = place.formatted_address;
+		var address = place.vicinity;
 		var marker = new google.maps.Marker({
 			position: LatLng,
 			map: mapset,
 			icon: place.icon,
+			clicked: false
 		});
 		var rating = place.rating;
 		if (rating){
@@ -102,13 +103,27 @@ var placemarkers;
 		'</div>'+
 		'<h2 class="restaurantName">' + name + '</h2>' +
 		'<p>Rating: ' + rating + '<br/>' +
-		'Address: ' + address + '</p>';
+		'Address: ' + address + '</p>' +
+		'</div>'+
+		'<button type="button">Been here</button>';
+		google.maps.event.addListener(marker, 'click', function(){
+			marker.clicked = true;
+		});
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});
-		google.maps.event.addListener(marker, 'click', function(){
+		google.maps.event.addListener(infowindow, 'closeclick', function(){
+			marker.clicked = false;
+		});
+		var hoverListener = new google.maps.event.addListener(marker, 'mouseover', function(){
 			infowindow.open(map, marker);
 		});
+		var mouseOutListener = new google.maps.event.addListener(marker,'mouseout',function(){
+			if (!marker.clicked){
+				infowindow.close(map, marker);
+			}
+		});
+
 		marker.setMap(mapset);
 	}
 	// $(window).on('load' initialize);
