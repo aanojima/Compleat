@@ -12,8 +12,12 @@ def create
 end
 
 def destroy
-    sign_out
-    redirect_to root_url
+	if signed_in?
+    	sign_out
+    	redirect_to root_url
+	else
+		redirect_to new_session_path
+    end
 end
 
 end

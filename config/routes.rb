@@ -6,7 +6,7 @@ FlyDelts::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  delete 'signout', to: 'sessions#destroy', as: :sign_out
+  get 'signout', to: 'sessions#destroy', as: :sign_out
 
   # You can have the root of your site routed with "root"
   root :to => 'users#new'
