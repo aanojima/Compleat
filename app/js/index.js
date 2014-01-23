@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("#login").click(function(event){
+	$("#signin").click(function(event){
 		event.preventDefault();
 		$.ajax({
 			method : "GET",
@@ -18,15 +18,15 @@ $(document).ready(function(){
 	});
 	$("#signup").click(function(event){
 		event.preventDefault();
-		if ($("#new_password").val() == $("#new_confirm_pw").val()){
+		if ($("#password").val() == $("#confirm").val()){
 			$.ajax({
 				method : "GET",
 				url : "/validate_new_user/",
 				data : {
-					first_name : $("#new_first_name").val(),
-					last_name : $("#new_last_name").val(),
-					email : $("#new_email").val(),
-					password : $("#new_password").val(),
+					first_name : $("#firstname").val(),
+					last_name : $("#lastname").val(),
+					email : $("#email").val(),
+					password : $("#password").val(),
 				},
 				success : function(result){
 					alert(result["status"]);

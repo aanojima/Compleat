@@ -8,6 +8,12 @@ from app.models import *
 def main(request):
 	return render(request, "app/main.html")
 
+def signin(request):
+	return render(request, "app/signin.html")
+
+def signup(request):
+	return render(request, "app/signup.html")
+
 def index(request):
 	try:
 		email = request.session["compleat/email"]
