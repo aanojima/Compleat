@@ -34,6 +34,17 @@
 <%= link_to 'Back', users_path %>
  -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWuJQ9I7VNlCE1GMswlE0xzqDZgWbzW-E&libraries=places&sensor=true"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Sintony' rel='stylesheet' type='text/css'>
+<%= stylesheet_link_tag    "showpage", media: "all", "data-turbolinks-track" => true %>
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<div id="map-canvas"></div>
+<div id="page">
+<div id="block-holder">
+  <div id="map-canvas"></div>
+  <div id='account'>Account</div>
+  <div id='logout'>Logout</div>
+  <div id='privacy'>Privacy</div>
+</div>
+</div>
