@@ -1,24 +1,66 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWuJQ9I7VNlCE1GMswlE0xzqDZgWbzW-E&libraries=places&sensor=true"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Dosis:300,400|Gafata' rel='stylesheet' type='text/css'>
+<%= stylesheet_link_tag    "showpage", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<body>
+  <div id="block-holder">
+    <div id='account'>
+      <p id='account-text'>Account</p>
+    </div>
+    <div id='logout'>
+      <p id='logout-text'>Logout</p>
+    </div>
+    <div id='privacy'>
+      <p id='privacy-text'>Privacy</p>
+    </div>
+  </div>
+  <div id='map-container'>
+    <div id="map-canvas"></div>
+  </div>
+  <div id="left-sidebar">
+    <div id="menu">
+      <form>
+        <input type="text" id="search">
+        <label for="search">Search</label>
+      </form>
+      <div id='div1' class="menu_selector">Title</div>
+      <div id='div2' class="menu_selector">Title</div>
+      <div id='div3' class="menu_selector">Title</div>
+    </div>
+    <div id="popups">
+      <div class="popup" div="div1">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+          <p>
+            <strong>First name:</strong>
+            <%= @user.first_name %>
+          </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+          <p>
+            <strong>Last name:</strong>
+            <%= @user.last_name %>
+          </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+          <p>
+            <strong>Username:</strong>
+            <%= @user.username %>
+          </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Sign Out', sign_out_path %>
+          <p>
+            <strong>Email:</strong>
+            <%= @user.email %>
+          </p>
+          <%= link_to 'Edit', edit_user_path(@user) %>
+          <%= link_to 'Back', users_path %>
+          <%= link_to 'Sign Out', sign_out_path %>
+      </div>
+      <div class="popup" div="div2">Popup2</div>
+      <div class="popup" div="div3">Popup3</div>
+    </div>
+  </div>
+<body>
+
+
