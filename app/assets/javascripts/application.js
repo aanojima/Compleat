@@ -107,7 +107,8 @@ $(document).ready(function(){
 		'<p>Rating: ' + rating + '<br/>' +
 		'Address: ' + address + '</p>' +
 		'</div>'+
-		'<button type="button">Been here</button>';
+		'<button class="place_button" name="' + name + '"" type="button">Been here</button>';
+
 		google.maps.event.addListener(marker, 'click', function(){
 			marker.clicked = true;
 		});
