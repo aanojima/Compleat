@@ -105,7 +105,8 @@ var placemarkers;
 		'<p>Rating: ' + rating + '<br/>' +
 		'Address: ' + address + '</p>' +
 		'</div>'+
-		'<button type="button">Been here</button>';
+		'<button class="place_button" name="' + name + '"" type="button">Been here</button>';
+
 		google.maps.event.addListener(marker, 'click', function(){
 			marker.clicked = true;
 		});
@@ -138,6 +139,20 @@ var placemarkers;
 		}
 		service.nearbySearch(request, callback); 
 	}
+
+	$(".place_button").click(function(event){
+		var location = $(this).attr("name");
+		$.ajax({
+			method : "POST",
+			url : "" //TODO,
+			data : {
+				place : location,
+			},
+			success : function(result){
+
+			},
+		});
+	});
 
 	$(document).ready(initialize);
 
