@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	{% load staticfiles %}
+
+	<link rel="stylesheet" href="{%static 'app/css/splash.css' %}">
+	<link rel="stylesheet" href="{%static 'bootstrap-theme.css' %}">
+	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400|Gafata' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
+	<img src="{%static 'app/images/city view.png' %}">
+	</head>
+	<div id='text'>
+		TIRED OF THE SAME OLD THING
+	</div>
+	<div id='description'>
+		Find new noms
+	</div>
+	<button type="button" class="btn btn-default" id='signup' onclick="window.location.href='/signup/'">Sign up</button>
+	<button type="button" class="btn btn-default" id='login' onclick="window.location.href='/signin/'">Login</button>
+
+	
+</html>
