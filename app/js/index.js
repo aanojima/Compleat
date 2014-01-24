@@ -11,7 +11,7 @@ $(document).ready(function(){
 			success : function(result){
 				alert(result["status"]);
 				if (result.status == "success"){
-					window.location.href = "/main/";
+					window.location.href = "/";
 				}
 			}
 		})
@@ -31,7 +31,7 @@ $(document).ready(function(){
 				success : function(result){
 					alert(result["status"]);
 					if (result.status == "success"){
-						window.location.href = "/main/";
+						window.location.href = "/";
 					}
 				}
 			});

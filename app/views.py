@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from app.models import *
 
 # Create your views here.
-def main(request):
-	return render(request, "app/main.html")
+# def main(request):
+# 	return render(request, "app/main.html")
 
 def signin(request):
 	return render(request, "app/signin.html")
@@ -18,7 +18,7 @@ def index(request):
 	try:
 		email = request.session["compleat/email"]
 		user = User.objects.get(email=email)
-		return main(request)
+		return render(request, "app/main.html")
 	except:
 		return render(request, "app/index.html")
 
