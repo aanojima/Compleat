@@ -8,10 +8,11 @@ class Place(models.Model):
 
 	# Place Information
 	name = models.CharField(max_length=100)
-	# latitude = models.FloatField()
-	# longitude = models.FloatField()
 	address = models.CharField(max_length=100, blank=True)
 	description = models.CharField(max_length=1000, blank=True)
+
+	def __unicode__(self):
+		return self.name
 
 
 class User(models.Model):
@@ -24,7 +25,19 @@ class User(models.Model):
 	last_name = models.CharField(max_length=100)
 	email = models.EmailField(unique=True)
 	password = models.CharField(max_length=50)
-	places = models.ManyToManyField(Place, blank=True, null=True)
+	places = models.ManyToManyField(Place, blank=True)
+
+	def __unicode__(self):
+		return self.email
+
+	def getHistory(self):
+		output = []
+		for place in self.places.all():
+			output.append(place.name)
+		return output
+
+	def getFN(self):
+		return self.first_name
 
 class Review(models.Model):
 
@@ -38,3 +51,5 @@ class Review(models.Model):
 	description = models.CharField(max_length=1000)
 	timestamp = models.DateTimeField(auto_now_add=True)
 	
+	def __unicode__(self):
+		return self.user.email + " for " + self.place.name	

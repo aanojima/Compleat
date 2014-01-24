@@ -136,6 +136,11 @@ html,body{
 	bottom : 0px;
 	overflow:hidden;
 }
+
+.popup_row {
+	width : 300px;
+}
+
 input {
 	position:absolute;
 	top:80px;

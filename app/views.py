@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.context_processors import csrf
 import json
 from django.http import HttpResponse
 
@@ -72,30 +73,35 @@ def add_user_place(request):
 
 	place_name = request.GET['name']
 	place_address = request.GET['address']
+	
+	result = {}
+
+	try:
+		email = request.session['compleat/email']
+		user = User.objects.get(email=email)
+	except:
+		result["status"] = "failure"
+
+	try:
+		place = Place.objects.get(name=place_name,address=place_address)
+		result["place_status"] = "exists"
+	except:
+		place = Place(name=place_name, address=place_address)
+		place.save()
+		result["place_status"] = "created"
+	user.places.add(place)
+	user.save()
+	result["status"] = "success"
+	return HttpResponse(json.dumps(result), content_type="application/json")
+
+def get_user_places(request):
 	result = {}
 	try:
 		email = request.session['compleat/email']
 		user = User.objects.get(email=email)
-		place = Place.objects.get(name=name, address=address)
-		user.places.add(place)
-		user.save()
+		history = user.getHistory()
+		result["history"] = history
 		result["status"] = "success"
 	except:
 		result["status"] = "failure"
 	return HttpResponse(json.dumps(result), content_type="application/json")
-
-
-# def login(request):
-# 	return render(request, "app/login.html")
-
-
-# def user_show(request):
-# 	return render(request, "app/index.html")
-
-# def test_ajax(request):
-# 	data = request.GET['data']
-# 	data2 = request.GET['data2']
-# 	response = {}
-# 	response['a'] = data
-# 	response['b'] = data2
-# 	return HttpResponse(json.dumps(response), content_type="application/json")

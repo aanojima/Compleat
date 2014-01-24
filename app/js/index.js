@@ -11,11 +11,7 @@ $(document).ready(function(){
 			success : function(result){
 				alert(result["status"]);
 				if (result.status == "success"){
-<<<<<<< HEAD
 					window.location.href = "/";
-=======
-					window.location.href = "/main/";
->>>>>>> b2279020b05df129db36ad9936d04b0d518a8aee
 				}
 			}
 		})
@@ -35,11 +31,7 @@ $(document).ready(function(){
 				success : function(result){
 					alert(result["status"]);
 					if (result.status == "success"){
-<<<<<<< HEAD
 						window.location.href = "/";
-=======
-						window.location.href = "/main/";
->>>>>>> b2279020b05df129db36ad9936d04b0d518a8aee
 					}
 				}
 			});

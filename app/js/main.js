@@ -98,11 +98,13 @@ $(document).ready(function(){
 		var LatLng = new google.maps.LatLng(place.geometry.location.d, place.geometry.location.e);
 		var name = place.name;
 		var address = place.vicinity;
+		var reference = place.reference;
 		var marker = new google.maps.Marker({
 			position: LatLng,
 			map: mapset,
 			icon: place.icon,
-			clicked: false
+			clicked: false,
+			reference : reference,
 		});
 		var rating = place.rating;
 		if (rating){
@@ -119,7 +121,7 @@ $(document).ready(function(){
 		'<p>Rating: ' + rating + '<br/>' +
 		'Address: ' + address + '</p>' +
 		'</div>'+
-		'<button id="'+ uid + '_buttton" class="place_button" name="' + name + '"" type="button">Been here</button>';
+		'<button class="place_button" name="' + name + '"" type="button">Been here</button>';
 
 		google.maps.event.addListener(marker, 'click', function(){
 			marker.clicked = true;
@@ -127,6 +129,7 @@ $(document).ready(function(){
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});
+
 		google.maps.event.addListener(infowindow, 'closeclick', function(){
 			marker.clicked = false;
 		});
@@ -139,21 +142,33 @@ $(document).ready(function(){
 			}
 		});
 
-		$("#" + uid + "_button").on("click", function(event){
-			console.log("click");
-			$.ajax({
-				method : "GET",
-				url : "/add_user_place/",
-				data : {
-					"name" : name,
-					"address" : address,
-				},
-				success : function(result){
-					alert(result);
-				},
-				error : function(error){
-					alert("error");
-				},
+		google.maps.event.addListener(infowindow, 'domready', function(){
+			$(".place_button").on("click", function(event){
+				$.ajax({
+					method : "GET",
+					url : "/add_user_place/",
+					data : {
+						"name" : name,
+						"address" : address,
+					},
+					success : function(result){
+						infowindow.close()
+						marker.clicked = false;
+						if (result.place_status == "exists"){
+							return;
+						} else if (result.place_status == "created") {
+							var list = $(".popup[div='div1'] ul")[0];
+							var li = document.createElement("li");
+							li.innerHTML = name;
+							list.appendChild(li);
+						}
+						console.log("Place has been logged succesffully! ");
+						console.log(result);
+					},
+					error : function(error){
+						console.log("AJAX ERROR");
+					},
+				});
 			});
 		});
 
@@ -169,7 +184,7 @@ $(document).ready(function(){
 		}
 		service.nearbySearch(request, callback); 
 	}
-	
+
 	$(".menu_selector").on("click", function(event){
 		var menu = $(this).attr("id");
 		var query = ".popup[div='" + menu + "']";
@@ -179,8 +194,6 @@ $(document).ready(function(){
 		width == 300 ? css = "0px" : css = "300px";
 		$(query).animate({"width" : css});
 	});	
-
-	initialize();
 
 	$("#logout").click(function(event){
 		$.ajax({
@@ -193,5 +206,20 @@ $(document).ready(function(){
 			}
 		})
 	});
+
+	$.ajax({
+		method : "GET",
+		url : "/get_user_places/",
+		success : function(result){
+			var list = $(".popup[div='div1'] ul")[0];
+			for (var i in result.history){
+				var li = document.createElement("li");
+				li.innerHTML = result.history[i];
+				list.appendChild(li);
+			}
+		}
+	});
+
+	initialize();
 
 });
