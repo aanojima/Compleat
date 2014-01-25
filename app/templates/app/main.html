@@ -5,11 +5,13 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWuJQ9I7VNlCE1GMswlE0xzqDZgWbzW-E&libraries=places&sensor=true"></script>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	{% load staticfiles %}
+  <script src="{% static 'app/js/set.js' %}"></script>
 	<script src="{% static 'app/js/main.js' %}"></script>
 	<link rel="stylesheet" href="{% static 'app/css/main.css' %}"></link>
 </head>
 <body>
   <div id="block-holder">
+    <div><h1 id="greeting"></h1></div>
     <div id='account' class="nav_button">
       <p id='account-text'>Account</p>
     </div>

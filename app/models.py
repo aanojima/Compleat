@@ -4,7 +4,7 @@ from django.db import models
 class Place(models.Model):
 
 	#Place Unique ID
-	place_id = models.AutoField(primary_key=True)
+	google_id = models.CharField(primary_key=True,max_length=200,editable=False)
 
 	# Place Information
 	name = models.CharField(max_length=100)
@@ -33,11 +33,10 @@ class User(models.Model):
 	def getHistory(self):
 		output = []
 		for place in self.places.all():
-			output.append(place.name)
+			addon = {"id" : place.google_id, "name" : place.name}
+			output.append(addon)
 		return output
 
-	def getFN(self):
-		return self.first_name
 
 class Review(models.Model):
 

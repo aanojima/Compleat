@@ -7,14 +7,21 @@ from app.models import *
 
 # Create your views here.
 
-# def main(request):
-# 	return render(request, "app/main.html")
-
 def signin(request):
-	return render(request, "app/signin.html")
+	try:
+		email = request.session["compleat/email"]
+		user = User.objects.get(email=email)
+		return render(request, "app/main.html")
+	except:
+		return render(request, "app/signin.html")
 
 def signup(request):
-	return render(request, "app/signup.html")
+	try:
+		email = request.session["compleat/email"]
+		user = User.objects.get(email=email)
+		return render(request, "app/main.html")
+	except:
+		return render(request, "app/signup.html")
 
 def index(request):
 	try:
@@ -71,6 +78,7 @@ def validate_new_user(request):
 
 def add_user_place(request):
 
+	place_id = request.GET['id']
 	place_name = request.GET['name']
 	place_address = request.GET['address']
 	
@@ -83,24 +91,30 @@ def add_user_place(request):
 		result["status"] = "failure"
 
 	try:
-		place = Place.objects.get(name=place_name,address=place_address)
+		place = Place.objects.get(google_id=place_id, name=place_name,address=place_address)
+	except:
+		place = Place(google_id=place_id, name=place_name, address=place_address)
+		place.save()
+
+	try:
+		user.places.all().get(google_id=place_id, name=place_name,address=place_address)
 		result["place_status"] = "exists"
 	except:
-		place = Place(name=place_name, address=place_address)
-		place.save()
+		user.places.add(place)
+		user.save()
 		result["place_status"] = "created"
-	user.places.add(place)
-	user.save()
+
 	result["status"] = "success"
 	return HttpResponse(json.dumps(result), content_type="application/json")
 
-def get_user_places(request):
+def get_user_info(request):
 	result = {}
 	try:
 		email = request.session['compleat/email']
 		user = User.objects.get(email=email)
 		history = user.getHistory()
 		result["history"] = history
+		result["user"] = user.first_name + " " + user.last_name
 		result["status"] = "success"
 	except:
 		result["status"] = "failure"
